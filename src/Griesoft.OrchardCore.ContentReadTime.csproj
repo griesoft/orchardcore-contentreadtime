@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<AssemblyName>Griesoft.OrchardCore.ContentReadTime</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<Authors>Joonas Griesinger</Authors>
+		<Company>Griesoft</Company>
+		<Copyright>Copyright (c) Griesoft 2026</Copyright>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageId>Griesoft.OrchardCore.ContentReadTime</PackageId>
+		<Title>Orchard Core Content Read Time Module</Title>
+		<Description>Calculates and stores the estimated read time for content items. An Orchard Core module by Griesoft.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageTags>contentreadtime;readtime;content;orchardcore;module;aspnetcore;griesoft</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<RepositoryUrl>https://github.com/griesoft/orchardcore-contentreadtime</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/griesoft/orchardcore-contentreadtime</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<OrchardCoreModules Include="$(AssemblyName)" Name="Content Read Time" Author="$(Company)" Website="https://griesoft.com" Version="$(Version)" Description="Calculates and stores the estimated read time for content items." Category="Content" Tags="contentreadtime;readtime;content;orchardcore" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="OrchardCore.ContentManagement" Version="2.2.1" />
+		<PackageReference Include="OrchardCore.Module.Targets" Version="2.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+</Project>

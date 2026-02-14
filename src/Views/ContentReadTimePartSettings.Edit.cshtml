@@ -1,0 +1,15 @@
+@model Griesoft.OrchardCore.ContentReadTime.ViewModels.ContentReadTimePartSettingsViewModel
+
+<div class="mb-3">
+    <label asp-for="SelectedSource" class="form-label">Content Source</label>
+    <select asp-for="SelectedSource" asp-items="Model.AvailableSources" class="form-select">
+        <option value="">-- Select a source --</option>
+    </select>
+    <div class="hint">Select which part or field contains the main content to calculate reading time from.</div>
+</div>
+
+<div class="mb-3">
+    <label asp-for="WordsPerMinute" class="form-label">Words Per Minute</label>
+    <input asp-for="WordsPerMinute" type="number" class="form-control" min="1" />
+    <div class="hint">Average reading speed used for the calculation. Default is 200.</div>
+</div>
