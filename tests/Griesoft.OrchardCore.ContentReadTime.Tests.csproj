@@ -14,6 +14,7 @@
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
 		<PackageReference Include="Moq" Version="4.20.72" />
 		<PackageReference Include="coverlet.collector" Version="6.0.4" />
+		<PackageReference Include="OrchardCore.Apis.GraphQL.Abstractions" Version="2.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>

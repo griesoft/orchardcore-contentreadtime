@@ -11,6 +11,7 @@ An Orchard Core module that calculates and stores the estimated read time for co
 - Calculates an estimated read time in minutes when content is published.
 - Stores the result on `ContentReadTimePart` for display in templates or queries.
 - Supports text from common body parts and text-bearing fields.
+- **GraphQL support**: Query read time data through Orchard Core's GraphQL API.
 
 ## Requirements
 
