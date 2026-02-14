@@ -1,5 +1,9 @@
 # Orchard Core Content Read Time Module
 
+[![CI](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml/badge.svg)](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml)
+[![NuGet](https://img.shields.io/nuget/v/Griesoft.OrchardCore.ContentReadTime.svg)](https://www.nuget.org/packages/Griesoft.OrchardCore.ContentReadTime/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 An Orchard Core module that calculates and stores the estimated read time for content items.
 
 ## Features
@@ -41,9 +45,26 @@ The module calculates read time during publish and stores the value in `ContentR
 
 ## Development
 
-- Build: `dotnet build`
-- Test: `dotnet test`
+### Building
+
+```bash
+dotnet build
+```
+
+### Testing
+
+```bash
+dotnet test
+```
+
+### Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting PRs.
+
+## Security
+
+For security vulnerabilities, please see our [Security Policy](SECURITY.md).
 
 ## License
 
-This project is licensed under the MIT license.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
