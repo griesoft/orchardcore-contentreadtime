@@ -23,6 +23,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for pushing commits and tags
+      packages: write  # Required for publishing packages (if using GitHub Packages)
     
     steps:
     - name: Checkout code
