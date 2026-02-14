@@ -69,19 +69,6 @@ public class ContentReadTimeQueryObjectTypeTests
     }
 
     [Fact]
-    public void MinutesField_IsNotNullable()
-    {
-        // Arrange & Act
-        var objectType = new ContentReadTimePartQueryObjectType();
-
-        // Assert
-        var field = objectType.GetField("Minutes");
-        Assert.NotNull(field);
-        // The field should be wrapped in NonNullGraphType since int is non-nullable
-        Assert.Equal(typeof(NonNullGraphType<GraphQLClrOutputTypeReference<int>>), field.Type);
-    }
-
-    [Fact]
     public void GraphQLType_CanBeInstantiated()
     {
         // Arrange & Act

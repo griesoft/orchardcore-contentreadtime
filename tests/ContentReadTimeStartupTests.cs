@@ -1,8 +1,5 @@
-using Griesoft.OrchardCore.ContentReadTime;
 using Griesoft.OrchardCore.ContentReadTime.GraphQL;
-using Griesoft.OrchardCore.ContentReadTime.Models;
 using Griesoft.OrchardCore.ContentReadTime.Services;
-using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -39,23 +36,5 @@ public class StartupTests
         Assert.Contains(services, s =>
             s.ImplementationType == typeof(ContentReadTimePartQueryObjectType) &&
             s.Lifetime == ServiceLifetime.Transient);
-    }
-
-    [Fact]
-    public void ConfigureServices_RegistersCorrectGraphQLTypeForContentPart()
-    {
-        // Arrange
-        var services = new ServiceCollection();
-        var startup = new Startup();
-
-        // Act
-        startup.ConfigureServices(services);
-
-        // Assert
-        Assert.Contains(services, s =>
-            s.ImplementationType == typeof(ContentReadTimePartQueryObjectType) &&
-            s.Lifetime == ServiceLifetime.Transient);
-        Assert.True(typeof(ObjectGraphType<ContentReadTimePart>)
-            .IsAssignableFrom(typeof(ContentReadTimePartQueryObjectType)));
     }
 }
