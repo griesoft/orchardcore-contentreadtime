@@ -116,6 +116,6 @@ public class ContentReadTimeQueryObjectTypeTests
         // Assert
         Assert.NotNull(field);
         Assert.Equal("Minutes", field.Name);
-        Assert.NotNull(field.Type);
+        Assert.Equal(typeof(IntGraphType), field.Type);
     }
 }
