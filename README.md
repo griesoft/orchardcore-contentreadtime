@@ -79,11 +79,7 @@ Version is managed in `Version.props`. Use the `update-version.ps1` script to up
 
 ### Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting PRs.
-
-## Security
-
-For security vulnerabilities, please see our [Security Policy](SECURITY.md).
+Contributions are welcome! Please submit pull requests with clear descriptions of changes.
 
 ## License
 
