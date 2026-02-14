@@ -15,7 +15,7 @@ public class ContentReadTimeQueryObjectType : ObjectGraphType<ContentReadTimePar
     {
         Name = "ContentReadTime";
 
-        Field(x => x.Minutes, nullable: true)
+        Field(x => x.Minutes)
             .Description("The estimated reading time in minutes for the content item.");
     }
 }

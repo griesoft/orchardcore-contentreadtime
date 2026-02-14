@@ -40,8 +40,8 @@ public class ContentReadTimeQueryObjectTypeTests
         // Assert
         var field = objectType.GetField("Minutes");
         Assert.NotNull(field);
-        // Verify it's an integer-based type (may be wrapped in NonNullGraphType)
-        Assert.NotNull(field.Type);
+        // Verify it's a non-null integer type
+        Assert.Equal(typeof(NonNullGraphType<GraphQLClrOutputTypeReference<int>>), field.Type);
     }
 
     [Fact]
@@ -82,7 +82,7 @@ public class ContentReadTimeQueryObjectTypeTests
     }
 
     [Fact]
-    public void MinutesField_IsNullable()
+    public void MinutesField_IsNotNullable()
     {
         // Arrange & Act
         var objectType = new ContentReadTimeQueryObjectType();
@@ -90,8 +90,8 @@ public class ContentReadTimeQueryObjectTypeTests
         // Assert
         var field = objectType.GetField("Minutes");
         Assert.NotNull(field);
-        // The field is marked as nullable in the constructor
-        Assert.NotNull(field.Type);
+        // The field should be wrapped in NonNullGraphType since int is non-nullable
+        Assert.Equal(typeof(NonNullGraphType<GraphQLClrOutputTypeReference<int>>), field.Type);
     }
 
     [Fact]
@@ -116,6 +116,6 @@ public class ContentReadTimeQueryObjectTypeTests
         // Assert
         Assert.NotNull(field);
         Assert.Equal("Minutes", field.Name);
-        Assert.Equal(typeof(IntGraphType), field.Type);
+        Assert.Equal(typeof(NonNullGraphType<GraphQLClrOutputTypeReference<int>>), field.Type);
     }
 }
