@@ -44,6 +44,56 @@ The module calculates read time during publish and stores the value in `ContentR
 - Build: `dotnet build`
 - Test: `dotnet test`
 
+### Versioning
+
+This project uses a centralized versioning approach:
+
+- The version is stored in `Version.props` at the repository root
+- This file can be edited manually or updated using the `update-version.ps1` script
+- The version is automatically applied to all projects and NuGet packages
+
+#### Manual version update
+
+Edit the `Version.props` file directly:
+
+```xml
+<Project>
+  <PropertyGroup>
+    <Version>1.2.3</Version>
+  </PropertyGroup>
+</Project>
+```
+
+#### Automated version update
+
+Use the PowerShell script:
+
+```powershell
+# Set a specific version
+./update-version.ps1 -Version "1.2.3"
+
+# Increment the patch version (1.0.0 -> 1.0.1)
+./update-version.ps1 -IncrementPatch
+
+# Increment the minor version (1.0.0 -> 1.1.0)
+./update-version.ps1 -IncrementMinor
+
+# Increment the major version (1.0.0 -> 2.0.0)
+./update-version.ps1 -IncrementMajor
+```
+
+#### GitHub Actions
+
+A sample workflow is provided in `.github/workflows/publish.yml` that demonstrates:
+- Updating the version automatically or manually
+- Building and testing the project
+- Publishing to NuGet
+- Creating a git tag for the release
+
+To use it, you need to:
+1. Add your `NUGET_API_KEY` to the repository secrets
+2. Trigger the workflow manually from the Actions tab
+
 ## License
 
 This project is licensed under the MIT license.
