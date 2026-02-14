@@ -3,7 +3,6 @@
 [![CI](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml/badge.svg)](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/Griesoft.OrchardCore.ContentReadTime.svg)](https://www.nuget.org/packages/Griesoft.OrchardCore.ContentReadTime/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Code Coverage](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg)](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml)
 
 An Orchard Core module that calculates and stores the estimated read time for content items.
 
@@ -57,28 +56,6 @@ dotnet build
 ```bash
 dotnet test
 ```
-
-### Code Coverage
-
-Code coverage is automatically collected during CI runs. To generate a coverage report locally:
-
-```bash
-# Run tests with coverage collection
-dotnet test --collect:"XPlat Code Coverage" --settings tests/coverlet.runsettings --results-directory ./coverage
-
-# Install report generator (one time)
-dotnet tool install -g dotnet-reportgenerator-globaltool
-
-# Generate HTML report
-reportgenerator -reports:"./coverage/**/coverage.cobertura.xml" -targetdir:"./coverage/report" -reporttypes:"Html"
-
-# Open the report
-open ./coverage/report/index.html  # macOS
-xdg-open ./coverage/report/index.html  # Linux
-start ./coverage/report/index.html  # Windows
-```
-
-The project maintains 100% code coverage across all testable code.
 
 ### Versioning
 
