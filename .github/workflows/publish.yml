@@ -1,0 +1,110 @@
+name: Publish NuGet Package
+
+# This workflow demonstrates how to automatically update the version
+# and publish the NuGet package. Customize as needed for your release process.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.0, 1.2.3-beta)'
+        required: true
+        type: string
+      increment:
+        description: 'Or increment version (leave version empty to use this)'
+        required: false
+        type: choice
+        options:
+          - none
+          - patch
+          - minor
+          - major
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required for pushing commits and tags
+      packages: write  # Required for publishing packages (if using GitHub Packages)
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Update version (explicit)
+      if: inputs.version != ''
+      shell: pwsh
+      run: |
+        ./update-version.ps1 -Version "${{ inputs.version }}"
+    
+    - name: Update version (increment)
+      if: inputs.version == '' && inputs.increment != 'none'
+      shell: pwsh
+      run: |
+        $increment = "${{ inputs.increment }}"
+        if ($increment -eq "major") {
+          ./update-version.ps1 -IncrementMajor
+        } elseif ($increment -eq "minor") {
+          ./update-version.ps1 -IncrementMinor
+        } elseif ($increment -eq "patch") {
+          ./update-version.ps1 -IncrementPatch
+        }
+    
+    - name: Get version
+      id: get_version
+      shell: pwsh
+      run: |
+        $content = Get-Content Version.props -Raw
+        $version = [regex]::Match($content, '<Version>(.*?)</Version>').Groups[1].Value
+        echo "version=$version" >> $env:GITHUB_OUTPUT
+        echo "Version to publish: $version"
+    
+    - name: Commit version change
+      id: commit_version
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add Version.props
+        if git diff --staged --quiet; then
+          echo "No version changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          git commit -m "chore: bump version to ${{ steps.get_version.outputs.version }}"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+    
+    - name: Pack
+      run: dotnet pack --configuration Release --no-build --output ./artifacts
+    
+    - name: Push to NuGet
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      # Note: You need to add NUGET_API_KEY to your repository secrets
+    
+    - name: Push version commit
+      if: steps.commit_version.outputs.has_changes == 'true'
+      run: git push
+    
+    - name: Create Git tag
+      run: |
+        if git rev-parse "v${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
+          echo "Tag v${{ steps.get_version.outputs.version }} already exists, skipping tag creation"
+        else
+          git tag "v${{ steps.get_version.outputs.version }}"
+          git push origin "v${{ steps.get_version.outputs.version }}"
+        fi
