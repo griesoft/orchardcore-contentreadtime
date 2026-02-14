@@ -36,7 +36,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<OrchardCoreModules Include="$(AssemblyName)" Name="Content Read Time" Author="$(Company)" Website="https://griesoft.com" Version="$(Version)" Description="Calculates and stores the estimated read time for content items." Category="Content" Tags="contentreadtime;readtime;content;orchardcore" />
+		<OrchardCoreModules 
+			Include="$(AssemblyName)" 
+			Name="Content Read Time" 
+			Author="$(Company)" Website="https://griesoft.com" 
+			Version="$(Version)" 
+			Description="Calculates and stores the estimated read time for content items." 
+			Category="Content" 
+			Tags="contentreadtime;readtime;content;orchardcore" 
+			DefaultTenant="false" 
+			AlwaysEnabled="false" 
+			EnabledByDependencyOnly="false" />
 	</ItemGroup>
 
 	<ItemGroup>
