@@ -64,11 +64,18 @@ jobs:
         echo "Version to publish: $version"
     
     - name: Commit version change
+      id: commit_version
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add Version.props
-        git diff --staged --quiet || git commit -m "chore: bump version to ${{ steps.get_version.outputs.version }}"
+        if git diff --staged --quiet; then
+          echo "No version changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          git commit -m "chore: bump version to ${{ steps.get_version.outputs.version }}"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
     
     - name: Restore dependencies
       run: dotnet restore
@@ -87,6 +94,7 @@ jobs:
       # Note: You need to add NUGET_API_KEY to your repository secrets
     
     - name: Push version commit
+      if: steps.commit_version.outputs.has_changes == 'true'
       run: git push
     
     - name: Create Git tag

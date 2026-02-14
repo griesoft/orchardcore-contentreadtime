@@ -105,7 +105,7 @@ else {
 
 # Update Version.props
 $newContent = $content -replace '<Version>.*?</Version>', "<Version>$newVersion</Version>"
-Set-Content -Path $VersionPropsPath -Value $newContent -NoNewline
+Set-Content -Path $VersionPropsPath -Value $newContent
 
 Write-Host "Updated version to: $newVersion" -ForegroundColor Green
 Write-Host "Version.props has been updated successfully."
