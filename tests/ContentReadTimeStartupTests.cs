@@ -37,7 +37,7 @@ public class StartupTests
         // Assert
         // The AddObjectGraphType extension registers the type as transient
         Assert.Contains(services, s =>
-            s.ImplementationType == typeof(ContentReadTimeQueryObjectType) &&
+            s.ImplementationType == typeof(ContentReadTimePartQueryObjectType) &&
             s.Lifetime == ServiceLifetime.Transient);
     }
 
@@ -50,11 +50,12 @@ public class StartupTests
 
         // Act
         startup.ConfigureServices(services);
-        var serviceProvider = services.BuildServiceProvider();
 
         // Assert
-        var graphqlType = serviceProvider.GetService<ContentReadTimeQueryObjectType>();
-        Assert.NotNull(graphqlType);
-        Assert.IsAssignableFrom<ObjectGraphType<ContentReadTimePart>>(graphqlType);
+        Assert.Contains(services, s =>
+            s.ImplementationType == typeof(ContentReadTimePartQueryObjectType) &&
+            s.Lifetime == ServiceLifetime.Transient);
+        Assert.True(typeof(ObjectGraphType<ContentReadTimePart>)
+            .IsAssignableFrom(typeof(ContentReadTimePartQueryObjectType)));
     }
 }

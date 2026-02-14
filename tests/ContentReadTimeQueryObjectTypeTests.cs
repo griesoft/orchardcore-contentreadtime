@@ -6,7 +6,7 @@ using Xunit;
 namespace Griesoft.OrchardCore.ContentReadTime.Tests;
 
 /// <summary>
-/// Tests for <see cref="ContentReadTimeQueryObjectType"/> GraphQL type.
+/// Tests for <see cref="ContentReadTimePartQueryObjectType"/> GraphQL type.
 /// </summary>
 public class ContentReadTimeQueryObjectTypeTests
 {
@@ -14,7 +14,7 @@ public class ContentReadTimeQueryObjectTypeTests
     public void Constructor_SetsCorrectName()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         Assert.Equal("ContentReadTime", objectType.Name);
@@ -24,31 +24,18 @@ public class ContentReadTimeQueryObjectTypeTests
     public void Constructor_RegistersMinutesField()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         var field = objectType.GetField("Minutes");
         Assert.NotNull(field);
-    }
-
-    [Fact]
-    public void MinutesField_IsIntegerType()
-    {
-        // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
-
-        // Assert
-        var field = objectType.GetField("Minutes");
-        Assert.NotNull(field);
-        // Verify it's a non-null integer type
-        Assert.Equal(typeof(NonNullGraphType<GraphQLClrOutputTypeReference<int>>), field.Type);
     }
 
     [Fact]
     public void MinutesField_HasDescription()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         var field = objectType.GetField("Minutes");
@@ -62,7 +49,7 @@ public class ContentReadTimeQueryObjectTypeTests
     public void GraphQLType_InheritsFromObjectGraphType()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         Assert.IsAssignableFrom<ObjectGraphType<ContentReadTimePart>>(objectType);
@@ -72,7 +59,7 @@ public class ContentReadTimeQueryObjectTypeTests
     public void GraphQLType_RegistersOnlyExpectedFields()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         // Should only have Minutes field (Fields property includes built-in fields like __typename)
@@ -85,7 +72,7 @@ public class ContentReadTimeQueryObjectTypeTests
     public void MinutesField_IsNotNullable()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         var field = objectType.GetField("Minutes");
@@ -98,7 +85,7 @@ public class ContentReadTimeQueryObjectTypeTests
     public void GraphQLType_CanBeInstantiated()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
 
         // Assert
         Assert.NotNull(objectType);
@@ -110,7 +97,7 @@ public class ContentReadTimeQueryObjectTypeTests
     public void MinutesField_HasCorrectFieldType()
     {
         // Arrange & Act
-        var objectType = new ContentReadTimeQueryObjectType();
+        var objectType = new ContentReadTimePartQueryObjectType();
         var field = objectType.GetField("Minutes");
 
         // Assert

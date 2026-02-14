@@ -6,12 +6,12 @@ namespace Griesoft.OrchardCore.ContentReadTime.GraphQL;
 /// <summary>
 /// GraphQL object type for exposing <see cref="ContentReadTimePart"/> in GraphQL queries.
 /// </summary>
-public class ContentReadTimeQueryObjectType : ObjectGraphType<ContentReadTimePart>
+public class ContentReadTimePartQueryObjectType : ObjectGraphType<ContentReadTimePart>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ContentReadTimeQueryObjectType"/> class.
+    /// Initializes a new instance of the <see cref="ContentReadTimePartQueryObjectType"/> class.
     /// </summary>
-    public ContentReadTimeQueryObjectType()
+    public ContentReadTimePartQueryObjectType()
     {
         Name = "ContentReadTime";
 

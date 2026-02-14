@@ -29,6 +29,6 @@ public sealed class Startup : StartupBase
         services.AddScoped<IContentReadTimeCalculator, ContentReadTimeCalculator>();
 
         // Register GraphQL type for ContentReadTimePart to enable GraphQL queries
-        services.AddObjectGraphType<ContentReadTimePart, ContentReadTimeQueryObjectType>();
+        services.AddObjectGraphType<ContentReadTimePart, ContentReadTimePartQueryObjectType>();
     }
 }

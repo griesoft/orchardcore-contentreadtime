@@ -2,7 +2,6 @@ using Griesoft.OrchardCore.ContentReadTime.Models;
 using Griesoft.OrchardCore.ContentReadTime.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OrchardCore.ContentManagement.Metadata.Models;
-using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
@@ -20,7 +19,7 @@ public sealed class ContentReadTimePartSettingsDisplayDriver : ContentTypePartDe
     /// <inheritdoc />
     public override IDisplayResult Edit(ContentTypePartDefinition contentTypePartDefinition, BuildEditorContext context)
     {
-        return Initialize<ContentReadTimePartSettingsViewModel>("ContentReadTimePartSettings_Edit", model =>
+        return Initialize<ContentReadTimePartSettingsViewModel>($"{nameof(ContentReadTimePartSettings)}_Edit", model =>
         {
             var settings = contentTypePartDefinition.GetSettings<ContentReadTimePartSettings>();
             model.WordsPerMinute = settings.WordsPerMinute;
