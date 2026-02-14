@@ -27,8 +27,18 @@ public sealed class Startup : StartupBase
         services.AddScoped<IContentTypePartDefinitionDisplayDriver, ContentReadTimePartSettingsDisplayDriver>();
         services.AddDataMigration<ContentReadTimeMigrations>();
         services.AddScoped<IContentReadTimeCalculator, ContentReadTimeCalculator>();
+    }
+}
 
-        // Register GraphQL type for ContentReadTimePart to enable GraphQL queries
+/// <summary>
+/// Registers GraphQL types for the Content Read Time module.
+/// </summary>
+[RequireFeatures("OrchardCore.Apis.GraphQL")]
+public sealed class GraphQLStartup : StartupBase
+{
+    /// <inheritdoc />
+    public override void ConfigureServices(IServiceCollection services)
+    {
         services.AddObjectGraphType<ContentReadTimePart, ContentReadTimePartQueryObjectType>();
     }
 }

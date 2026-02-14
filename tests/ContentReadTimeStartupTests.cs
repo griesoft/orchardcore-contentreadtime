@@ -26,7 +26,7 @@ public class StartupTests
     {
         // Arrange
         var services = new ServiceCollection();
-        var startup = new Startup();
+        var startup = new GraphQLStartup();
 
         // Act
         startup.ConfigureServices(services);
