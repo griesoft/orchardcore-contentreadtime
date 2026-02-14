@@ -41,6 +41,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="OrchardCore.ContentManagement" Version="2.2.1" />
+		<PackageReference Include="OrchardCore.Apis.GraphQL.Abstractions" Version="2.2.1" />
 		<PackageReference Include="OrchardCore.Module.Targets" Version="2.2.1" />
 	</ItemGroup>
 

@@ -1,9 +1,11 @@
 using Griesoft.OrchardCore.ContentReadTime.Drivers;
+using Griesoft.OrchardCore.ContentReadTime.GraphQL;
 using Griesoft.OrchardCore.ContentReadTime.Handlers;
 using Griesoft.OrchardCore.ContentReadTime.Migrations;
 using Griesoft.OrchardCore.ContentReadTime.Models;
 using Griesoft.OrchardCore.ContentReadTime.Services;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Apis;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.Data.Migration;
@@ -25,5 +27,8 @@ public sealed class Startup : StartupBase
         services.AddScoped<IContentTypePartDefinitionDisplayDriver, ContentReadTimePartSettingsDisplayDriver>();
         services.AddDataMigration<ContentReadTimeMigrations>();
         services.AddScoped<IContentReadTimeCalculator, ContentReadTimeCalculator>();
+
+        // Register GraphQL type for ContentReadTimePart to enable GraphQL queries
+        services.AddObjectGraphType<ContentReadTimePart, ContentReadTimePartQueryObjectType>();
     }
 }

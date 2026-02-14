@@ -1,4 +1,4 @@
-using Griesoft.OrchardCore.ContentReadTime;
+using Griesoft.OrchardCore.ContentReadTime.GraphQL;
 using Griesoft.OrchardCore.ContentReadTime.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -19,5 +19,22 @@ public class StartupTests
             s.ServiceType == typeof(IContentReadTimeCalculator) &&
             s.ImplementationType == typeof(ContentReadTimeCalculator) &&
             s.Lifetime == ServiceLifetime.Scoped);
+    }
+
+    [Fact]
+    public void ConfigureServices_RegistersGraphQLObjectType()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        var startup = new Startup();
+
+        // Act
+        startup.ConfigureServices(services);
+
+        // Assert
+        // The AddObjectGraphType extension registers the type as transient
+        Assert.Contains(services, s =>
+            s.ImplementationType == typeof(ContentReadTimePartQueryObjectType) &&
+            s.Lifetime == ServiceLifetime.Transient);
     }
 }
