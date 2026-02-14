@@ -1,5 +1,9 @@
 # Orchard Core Content Read Time Module
 
+[![CI](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml/badge.svg)](https://github.com/griesoft/orchardcore-contentreadtime/actions/workflows/ci.yml)
+[![NuGet](https://img.shields.io/nuget/v/Griesoft.OrchardCore.ContentReadTime.svg)](https://www.nuget.org/packages/Griesoft.OrchardCore.ContentReadTime/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 An Orchard Core module that calculates and stores the estimated read time for content items.
 
 ## Features
@@ -41,9 +45,42 @@ The module calculates read time during publish and stores the value in `ContentR
 
 ## Development
 
-- Build: `dotnet build`
-- Test: `dotnet test`
+### Building
+
+```bash
+dotnet build
+```
+
+### Testing
+
+```bash
+dotnet test
+```
+
+### Versioning
+
+Version is managed in `Version.props`. Use the `update-version.ps1` script to update:
+
+```powershell
+# Set specific version
+./update-version.ps1 -Version "1.2.3"
+
+# Increment version
+./update-version.ps1 -IncrementPatch  # 1.0.0 -> 1.0.1
+./update-version.ps1 -IncrementMinor  # 1.0.0 -> 1.1.0
+./update-version.ps1 -IncrementMajor  # 1.0.0 -> 2.0.0
+```
+
+### Branch Strategy
+
+- **main** - Production releases (stable versions)
+- **dev** - Active development (preview releases)
+- **feature/** - Feature branches (CI only)
+
+### Contributing
+
+Contributions are welcome! Please submit pull requests with clear descriptions of changes.
 
 ## License
 
-This project is licensed under the MIT license.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
