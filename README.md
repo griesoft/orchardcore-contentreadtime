@@ -57,6 +57,26 @@ dotnet build
 dotnet test
 ```
 
+### Versioning
+
+Version is managed in `Version.props`. Use the `update-version.ps1` script to update:
+
+```powershell
+# Set specific version
+./update-version.ps1 -Version "1.2.3"
+
+# Increment version
+./update-version.ps1 -IncrementPatch  # 1.0.0 -> 1.0.1
+./update-version.ps1 -IncrementMinor  # 1.0.0 -> 1.1.0
+./update-version.ps1 -IncrementMajor  # 1.0.0 -> 2.0.0
+```
+
+### Branch Strategy
+
+- **main** - Production releases (stable versions)
+- **dev** - Active development (preview releases)
+- **feature/** - Feature branches (CI only)
+
 ### Contributing
 
 Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting PRs.
