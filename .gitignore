@@ -367,3 +367,5 @@ MigrationBackup/
 FodyWeavers.xsd
 # Orchard Core sample host data (local dev only)
 samples/**/App_Data/
+samples/**/Localization/
+samples/**/wwwroot/
