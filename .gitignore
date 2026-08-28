@@ -365,3 +365,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Orchard Core sample host data (local dev only)
+samples/**/App_Data/

@@ -7,4 +7,5 @@
   </Folder>
   <Project Path="src\Griesoft.OrchardCore.ContentReadTime.csproj" />
   <Project Path="tests\Griesoft.OrchardCore.ContentReadTime.Tests.csproj" />
+  <Project Path="samples\Griesoft.OrchardCore.ContentReadTime.Sample\Griesoft.OrchardCore.ContentReadTime.Sample.csproj" />
 </Solution>
