@@ -300,7 +300,7 @@ public class ContentReadTimePartSettingsDisplayDriverTests
         var sources = InvokeBuildAvailableSources(typeDef);
 
         Assert.Single(sources);
-        Assert.Equal("BlogPost ? Body (HtmlField)", sources[0].Text);
+        Assert.Equal("BlogPost → Body (HtmlField)", sources[0].Text);
         Assert.Equal("BlogPost:Body", sources[0].Value);
     }
 

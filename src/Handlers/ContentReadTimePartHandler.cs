@@ -8,7 +8,7 @@ using OrchardCore.ContentManagement.Metadata;
 namespace Griesoft.OrchardCore.ContentReadTime.Handlers;
 
 /// <summary>
-/// Handles publishing events for <see cref="ReadTimePart"/> to calculate and persist the estimated reading time.
+/// Handles publishing events for <see cref="ContentReadTimePart"/> to calculate and persist the estimated reading time.
 /// </summary>
 public sealed class ContentReadTimePartHandler : ContentPartHandler<ContentReadTimePart>
 {

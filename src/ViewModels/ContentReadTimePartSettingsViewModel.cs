@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Griesoft.OrchardCore.ContentReadTime.ViewModels;
 
 /// <summary>
-/// View model for editing <see cref="Models.ReadTimePartSettings"/>.
+/// View model for editing <see cref="Models.ContentReadTimePartSettings"/>.
 /// </summary>
 public class ContentReadTimePartSettingsViewModel
 {
