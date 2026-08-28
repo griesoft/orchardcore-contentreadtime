@@ -15,8 +15,8 @@ An Orchard Core module that calculates and stores the estimated read time for co
 
 ## Requirements
 
-- .NET 8
-- Orchard Core 2.2.1 (the version referenced by this module)
+- .NET 10
+- Orchard Core 3.0.1 (the version referenced by this module)
 
 ## Installation
 

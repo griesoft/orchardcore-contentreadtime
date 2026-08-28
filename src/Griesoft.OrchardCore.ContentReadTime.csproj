@@ -3,7 +3,7 @@
 	<Import Project="..\Version.props" />
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
@@ -50,9 +50,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="OrchardCore.ContentManagement" Version="2.2.1" />
-		<PackageReference Include="OrchardCore.Apis.GraphQL.Abstractions" Version="2.2.1" />
-		<PackageReference Include="OrchardCore.Module.Targets" Version="2.2.1" />
+		<PackageReference Include="OrchardCore.ContentManagement" Version="3.0.1" />
+		<PackageReference Include="OrchardCore.Apis.GraphQL.Abstractions" Version="3.0.1" />
+		<PackageReference Include="OrchardCore.Module.Targets" Version="3.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

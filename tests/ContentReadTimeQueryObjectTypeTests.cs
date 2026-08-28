@@ -1,5 +1,7 @@
 using Griesoft.OrchardCore.ContentReadTime.GraphQL;
 using Griesoft.OrchardCore.ContentReadTime.Models;
+using GraphQL;
+using GraphQL.Execution;
 using GraphQL.Types;
 using Xunit;
 
@@ -78,6 +80,36 @@ public class ContentReadTimeQueryObjectTypeTests
         Assert.NotNull(objectType);
         Assert.NotNull(objectType.Name);
         Assert.NotEmpty(objectType.Fields);
+    }
+
+    [Fact]
+    public async Task ExecutedQuery_ResolvesMinutesValue()
+    {
+        // Arrange
+        var schema = new Schema { Query = new TestQuery() };
+
+        // Act
+        var result = await new DocumentExecuter().ExecuteAsync(options =>
+        {
+            options.Schema = schema;
+            options.Query = "{ contentReadTime { minutes } }";
+        });
+
+        // Assert
+        Assert.Null(result.Errors);
+        var data = Assert.IsAssignableFrom<ObjectExecutionNode>(result.Data).ToValue() as IDictionary<string, object?>;
+        Assert.NotNull(data);
+        var part = Assert.IsAssignableFrom<IDictionary<string, object?>>(data["contentReadTime"]);
+        Assert.Equal(3, part["minutes"]);
+    }
+
+    private sealed class TestQuery : ObjectGraphType
+    {
+        public TestQuery()
+        {
+            Field<ContentReadTimePartQueryObjectType>("contentReadTime")
+                .Resolve(_ => new ContentReadTimePart { Minutes = 3 });
+        }
     }
 
     [Fact]

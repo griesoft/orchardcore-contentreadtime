@@ -74,7 +74,7 @@ public sealed class ContentReadTimePartSettingsDisplayDriver : ContentTypePartDe
             {
                 if (TextBearingFieldTypes.Contains(field.FieldDefinition.Name))
                 {
-                    var display = $"{typePart.Name} ? {field.Name} ({field.FieldDefinition.Name})";
+                    var display = $"{typePart.Name} → {field.Name} ({field.FieldDefinition.Name})";
                     sources.Add(new SelectListItem(display, $"{typePart.Name}:{field.Name}"));
                 }
             }

@@ -1,7 +1,7 @@
 namespace Griesoft.OrchardCore.ContentReadTime.Models;
 
 /// <summary>
-/// Settings for <see cref="ReadTimePart"/> that control which content source is used and reading speed.
+/// Settings for <see cref="ContentReadTimePart"/> that control which content source is used and reading speed.
 /// </summary>
 public class ContentReadTimePartSettings
 {

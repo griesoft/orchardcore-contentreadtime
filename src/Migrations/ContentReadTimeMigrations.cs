@@ -6,7 +6,7 @@ using OrchardCore.Data.Migration;
 namespace Griesoft.OrchardCore.ContentReadTime.Migrations;
 
 /// <summary>
-/// Data migration that registers the <see cref="ReadTimePart"/> content part definition.
+/// Data migration that registers the <see cref="ContentReadTimePart"/> content part definition.
 /// </summary>
 public sealed class ContentReadTimeMigrations : DataMigration
 {
